@@ -1,0 +1,12 @@
+<!-- No skill facade injection to list-->
+<!-- <app-skills-list
+  [skills]="skills$ | async"
+  (itemAdded)="sf.addSkill($event)"
+  (itemDeleted)="sf.deleteSkill($event)"
+  (toggleCompleted)="sf.toggleComplete($event)"
+  (toggleShowAll)="toggleShowAll()"
+></app-skills-list> -->
+
+<app-skill-list-with-row> </app-skill-list-with-row>
+
+<app-skills-kpi></app-skills-kpi>

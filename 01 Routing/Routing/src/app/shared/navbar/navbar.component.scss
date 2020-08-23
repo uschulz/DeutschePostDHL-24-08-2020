@@ -1,0 +1,18 @@
+@import "stylevars.scss";
+
+.navTitle {
+  color: $ngRed;
+  font-size: $big-font;
+}
+
+.navLink {
+  @include link($medium-font, $light-col);
+}
+
+.navLink-active {
+  text-decoration: underline;
+}
+
+mat-toolbar-row {
+  min-height: $big-toolbar;
+}
