@@ -10,7 +10,7 @@ import { foodFeatureKey, FoodReducer } from './store/reducers/food.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { FoodEffects } from './store/effects/food.effects';
 
-let comps = [FoodContainerComponent, FoodListComponent, FoodEditComponent];
+const comps = [FoodContainerComponent, FoodListComponent, FoodEditComponent];
 
 @NgModule({
   declarations: comps,
@@ -20,7 +20,7 @@ let comps = [FoodContainerComponent, FoodListComponent, FoodEditComponent];
     MaterialModule,
     ReactiveFormsModule,
     StoreModule.forFeature(foodFeatureKey, FoodReducer),
-    EffectsModule.forFeature([FoodEffects])
-  ]
+    EffectsModule.forFeature([FoodEffects]),
+  ],
 })
 export class FoodModule {}

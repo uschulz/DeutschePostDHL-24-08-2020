@@ -15,14 +15,14 @@
     "component": "ChildRoutesComponent"
   },
   {
-    "url": "secondary",
-    "title": "Secondary Routes",
-    "component": "SecondaryRoutesComponent"
-  },
-  {
     "url": "lazy-loading",
     "title": "Lazy Loading",
     "component": "LazyLoading"
+  },
+  {
+    "url": "secondary",
+    "title": "Secondary Routes",
+    "component": "SecondaryRoutesComponent"
   },
   {
     "url": "component-less",

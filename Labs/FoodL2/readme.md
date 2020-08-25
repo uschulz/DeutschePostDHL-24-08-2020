@@ -1,4 +1,11 @@
-## Getting Started
+# Migrate Stateful Service to NgRx
+
+## Tasks
+
+- Use the guide to get started to migrate to NgRx
+- Implement as much functionality as you can using NgRx
+
+## Guide
 
 Installation:
 
@@ -69,9 +76,9 @@ ng g ef food/store/food --group
 > Note: Rename classes to FoodReducer, FoodState, .... Later you can use abstract names like reducer and use Import Aliases
 
 ```typescript
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const foodFeatureKey = "food";
+export const foodFeatureKey = 'food';
 
 export interface FoodState {}
 
@@ -97,14 +104,14 @@ EffectsModule.forFeature([FoodEffects])]
 Add FoodState to RootState:
 
 ```typescript
-import { FoodState, FoodReducer } from "../food/store/reducers/food.reducer";
+import { FoodState, FoodReducer } from '../food/store/reducers/food.reducer';
 
 export interface State {
   food: FoodState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  food: FoodReducer
+  food: FoodReducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
@@ -115,12 +122,12 @@ export const metaReducers: MetaReducer<State>[] = !environment.production
 Add Food Actions:
 
 ```typescript
-import { FoodItem } from "../../food.model";
+import { FoodItem } from '../../food.model';
 
 export enum FoodActionTypes {
-  LoadFoods = "[Food] Load Foods",
-  LoadFoods_Success = "[Food] LoadFoods_Success",
-  LoadFoods_Error = "[Food] LoadFoods_Error"
+  LoadFoods = '[Food] Load Foods',
+  LoadFoods_Success = '[Food] LoadFoods_Success',
+  LoadFoods_Error = '[Food] LoadFoods_Error',
 }
 
 export class LoadFoods implements Action {
@@ -143,14 +150,14 @@ export type FoodActions = LoadFoods | LoadFood_Success | LoadFood_Error;
 Modify Food Effects:
 
 ```typescript
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { Observable, of } from "rxjs";
-import { Action } from "@ngrx/store";
-import { mergeMap, map, catchError } from "rxjs/operators";
-import * as foodActions from "../actions/food.actions";
-import { FoodItem } from "../../food.model";
-import { FoodService } from "../../food.service";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Observable, of } from 'rxjs';
+import { Action } from '@ngrx/store';
+import { mergeMap, map, catchError } from 'rxjs/operators';
+import * as foodActions from '../actions/food.actions';
+import { FoodItem } from '../../food.model';
+import { FoodService } from '../../food.service';
 
 @Injectable()
 export class FoodEffects {
@@ -159,10 +166,10 @@ export class FoodEffects {
   @Effect()
   loadFood$: Observable<Action> = this.actions$.pipe(
     ofType(foodActions.FoodActionTypes.LoadFoods),
-    mergeMap(action =>
+    mergeMap((action) =>
       this.fs.getFood().pipe(
         map((food: FoodItem[]) => new foodActions.LoadFood_Success(food)),
-        catchError(err => of(new foodActions.LoadFood_Error(err)))
+        catchError((err) => of(new foodActions.LoadFood_Error(err)))
       )
     )
   );
@@ -180,7 +187,7 @@ export const foodAdapter: EntityAdapter<FoodItem> = createEntityAdapter<
 
 export const defaultFoodState: FoodState = {
   ids: [],
-  entities: {}
+  entities: {},
 };
 
 export const initialState = foodAdapter.getInitialState(defaultFoodState);
@@ -195,7 +202,7 @@ export function FoodReducer(
     }
     case FoodActionTypes.LoadFoods_Success: {
       return foodAdapter.addAll(action.payload, {
-        ...state
+        ...state,
       });
     }
     case FoodActionTypes.LoadFoods_Error: {
@@ -213,9 +220,9 @@ Create Selectios in `..food/store/selectors/food.selectors.ts`:
 import {
   foodFeatureKey,
   foodAdapter,
-  FoodState
-} from "../reducers/food.reducer";
-import { createFeatureSelector, createSelector } from "@ngrx/store";
+  FoodState,
+} from '../reducers/food.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const getFoodState = createFeatureSelector<FoodState>(foodFeatureKey);
 
@@ -224,8 +231,8 @@ export const getFoodEntities = createSelector(
   foodAdapter.getSelectors().selectAll
 );
 
-export const getAllFood = createSelector(getFoodEntities, entities => {
-  return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
+export const getAllFood = createSelector(getFoodEntities, (entities) => {
+  return Object.keys(entities).map((id) => entities[parseInt(id, 10)]);
 });
 ```
 

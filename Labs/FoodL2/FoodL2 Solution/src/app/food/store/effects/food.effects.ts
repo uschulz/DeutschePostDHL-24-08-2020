@@ -14,10 +14,10 @@ export class FoodEffects {
   @Effect()
   loadFood$: Observable<Action> = this.actions$.pipe(
     ofType(foodActions.FoodActionTypes.LoadFoods),
-    mergeMap(action =>
+    mergeMap((action) =>
       this.fs.getFood().pipe(
-        map((food: FoodItem[]) => new foodActions.LoadFood_Success(food)),
-        catchError(err => of(new foodActions.LoadFood_Error(err)))
+        map((food: FoodItem[]) => new foodActions.LoadFoodSuccess(food)),
+        catchError((err) => of(new foodActions.LoadFoodError(err)))
       )
     )
   );

@@ -6,6 +6,7 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Person } from '../person.model';
 
@@ -28,6 +29,9 @@ export class PersonEditComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.person) {
       console.log('receiving updated person:', changes.person.currentValue);
+    }
+    if (changes.editMode) {
+      console.log('editmode');
     }
   }
 

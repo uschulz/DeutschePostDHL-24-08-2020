@@ -49,9 +49,9 @@ export class ReactiveValidationComponent implements OnInit {
       age: [this.person.age, [Validators.min(18), Validators.max(99)]],
       gender: [this.person.gender],
       email: [
-        this.person.email,
-        [Validators.required, Validators.email],
-        [this.mailExistsValidator],
+        this.person.email, //Model Val
+        [Validators.required, Validators.email], //Sync Validators
+        [this.mailExistsValidator], //Async Val
         { updateOn: 'blur' },
       ],
       wealth: [this.person.wealth],
@@ -68,7 +68,7 @@ export class ReactiveValidationComponent implements OnInit {
     this.ps.save(personForm);
   }
 
-  //Sample for custom Validator
+  //Sample for custom sync Validator
   validateName(control: FormControl): { [s: string]: boolean } {
     if (control.value === 'Hugo') {
       return { nameError: true };

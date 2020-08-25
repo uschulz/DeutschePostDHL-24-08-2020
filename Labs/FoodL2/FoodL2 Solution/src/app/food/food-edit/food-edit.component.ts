@@ -4,7 +4,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
+  OnChanges,
 } from '@angular/core';
 import { FoodItem } from 'src/app/food/food.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,15 +13,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-food-edit',
   templateUrl: './food-edit.component.html',
-  styleUrls: ['./food-edit.component.scss']
+  styleUrls: ['./food-edit.component.scss'],
 })
-export class FoodEditComponent implements OnInit {
+export class FoodEditComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       id: 0,
       name: ['', [Validators.required, Validators.minLength(3)]],
       price: [0, Validators.min(1)],
-      calories: 0
+      calories: 0,
     });
   }
 

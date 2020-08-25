@@ -5,19 +5,19 @@ export enum FoodActionTypes {
   LoadFoods = '[Food] Load Foods',
   LoadFoods_Success = '[Food] LoadFoods_Success',
   LoadFoods_Error = '[Food] LoadFoods_Error',
-  SelectFood = '[Food] SelectFood'
+  SelectFood = '[Food] SelectFood',
 }
 
 export class LoadFoods implements Action {
   readonly type = FoodActionTypes.LoadFoods;
 }
 
-export class LoadFood_Success implements Action {
+export class LoadFoodSuccess implements Action {
   readonly type = FoodActionTypes.LoadFoods_Success;
   constructor(public payload: FoodItem[]) {}
 }
 
-export class LoadFood_Error implements Action {
+export class LoadFoodError implements Action {
   readonly type = FoodActionTypes.LoadFoods_Error;
   constructor(public payload: Error) {}
 }
@@ -29,6 +29,6 @@ export class SelectFood implements Action {
 
 export type FoodActions =
   | LoadFoods
-  | LoadFood_Success
-  | LoadFood_Error
+  | LoadFoodSuccess
+  | LoadFoodError
   | SelectFood;

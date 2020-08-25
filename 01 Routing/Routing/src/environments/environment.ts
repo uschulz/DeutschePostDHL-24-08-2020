@@ -7,7 +7,7 @@ export const environment = {
   title: 'ngRouting',
   vouchersAPI: '/assets/vouchers.json',
   markdownPath: '/assets/markdown/',
-  authEnabled: false,
+  authEnabled: true,
 };
 
 /*
