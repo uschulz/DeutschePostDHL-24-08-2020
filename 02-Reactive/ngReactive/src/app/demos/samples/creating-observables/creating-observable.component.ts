@@ -17,11 +17,21 @@ export class CreatingObservableComponent implements OnInit {
   ngOnInit() {}
 
   subscribingObservables() {
-    of([2, 5, 9, 12, 22]).subscribe(
-      (data: number[]) => console.log('subscribe: ', data),
+    const vals = of(2, 5, 9);
+
+    vals.subscribe((val) => console.log('of-vals', val));
+
+    const arr = of([2, 5, 9, 12, 22], [4, 7]);
+
+    arr.subscribe(
+      (data: number[]) => console.log('of-arr: ', data),
       this.onErr,
       this.onComplete
     );
+
+    const arrFrom = from([2, 5, 9, 12, 22]);
+
+    arrFrom.subscribe((val) => console.log('from', val));
 
     // new subscribe pattern - above pattern deprecated
     // in future release will take only one argument:
@@ -95,6 +105,7 @@ export class CreatingObservableComponent implements OnInit {
           observer.next(pos);
           observer.complete();
         },
+
         (err: PositionError) => {
           observer.error(err);
         }

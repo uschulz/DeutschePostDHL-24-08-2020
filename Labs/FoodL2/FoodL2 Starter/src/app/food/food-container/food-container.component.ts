@@ -18,11 +18,12 @@ export class FoodContainerComponent implements OnInit {
   }
 
   selectFood(f: FoodItem) {
+    console.log('selecting', f);
     // this.selected = { ...f };
   }
 
   deleteFood(f: FoodItem) {
-    console.log('deleteing ', f);
+    console.log('deleting ', f);
     // this.food = this.food.filter(item => item.id != f.id);
   }
 

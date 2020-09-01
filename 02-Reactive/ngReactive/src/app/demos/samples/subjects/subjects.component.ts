@@ -15,8 +15,8 @@ export class SubjectsComponent implements OnInit {
   as$: AsyncSubject<number> = new AsyncSubject();
 
   ngOnInit() {
-    this.runSubjectInit();
-    // this.runBSubjectInit();
+    // this.runSubjectInit();
+    this.runBSubjectInit();
     // this.runRPSubjectInit();
     // this.runASubjectInit();
   }
@@ -24,8 +24,8 @@ export class SubjectsComponent implements OnInit {
   private runSubjectInit() {
     console.log('init subject');
     this.sub$.subscribe((val) => console.log('Subsciber A', val));
-    this.sub$.subscribe((val) => console.log('Subsciber B', val));
     this.sub$.next(10);
+    this.sub$.subscribe((val) => console.log('Subsciber B', val));
   }
 
   emitNext() {
@@ -35,8 +35,8 @@ export class SubjectsComponent implements OnInit {
 
   private runBSubjectInit() {
     console.log('init behaviour subject');
-    this.bs$.next(0);
     this.bs$.subscribe((val) => console.log('BS Subsciber A', val));
+    this.bs$.next(0);
     this.bs$.subscribe((val) => console.log('BS Subsciber B', val));
     this.bs$.next(10);
   }

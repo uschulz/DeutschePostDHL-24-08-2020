@@ -34,6 +34,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [RouteGuard],
     children: [
       {
         path: 'admina',
@@ -44,7 +45,6 @@ const routes: Routes = [
         component: AdminBComponent,
       },
     ],
-    canActivate: [RouteGuard],
   },
   { path: 'showeditor', component: EditorComponent, outlet: 'sidebarOutlet' },
   {
@@ -56,7 +56,16 @@ const routes: Routes = [
     path: 'wotschers',
     redirectTo: 'vouchers',
   },
-  { path: 'statistics', loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule) },
+  {
+    path: 'statistics',
+    loadChildren: () =>
+      import('./statistics/statistics.module').then((m) => m.StatisticsModule),
+  },
+  {
+    path: 'learning',
+    loadChildren: () =>
+      import('./learning/learning.module').then((m) => m.LearningModule),
+  },
   { path: '**', component: PageNotFoundComponent },
 ];
 

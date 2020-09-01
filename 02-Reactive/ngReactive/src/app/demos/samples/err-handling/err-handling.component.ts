@@ -30,7 +30,7 @@ export class ErrHandlingComponent implements OnInit {
 
   whereToHandle() {
     // handle exceptions here???
-    const obs = of('cleo', 'flora', 'giro', 'soi', 3).pipe(
+    const obs = of('cleo', 'flora', 'giro', 'soi', 3, 'ffx').pipe(
       map((name: string) => {
         return name.toUpperCase();
       })

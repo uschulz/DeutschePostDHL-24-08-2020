@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PersonService } from '../persons/person.service';
 import { Person } from '../persons/person.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
 })
-export class ContainerComponent implements OnInit {
-  constructor(private ps: PersonService) {}
+export class ContainerComponent implements OnInit, OnDestroy {
+  constructor(public ps: PersonService) {}
 
   persons: Person[];
   current: Person;
+  personSubs: Subscription;
 
   ngOnInit() {
-    this.ps.getPersons().subscribe((data) => {
+    console.log('ngOnInit');
+    this.personSubs = this.ps.getPersons().subscribe((data) => {
       this.persons = data;
     });
   }
 
+  ngOnDestroy() {
+    this.personSubs = null;
+  }
+
   onPersonSelected(p: Person) {
     // this.current = p;
-    this.current = { ...p };
+    this.current = { ...p }; // shallow clone
     // this.current = Object.assign({},p)
   }
 

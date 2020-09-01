@@ -80,7 +80,8 @@ export class OperatorsComponent implements OnInit {
     this.vouchers$
       .pipe(
         tap((data) => console.log('logged using tap() operator: ', data)),
-        map((vs) => vs.map(this.setLabel))
+        map((vs) => vs.map(this.setLabel)),
+        tap((data) => console.log('logged using tap() operator: ', data))
       )
       .subscribe((data) => this.log('use pipe(), map() & tap()', data));
   }
@@ -130,7 +131,7 @@ export class OperatorsComponent implements OnInit {
   }
 
   useDelay() {
-    const delayedObservable = of(['hund', 'katze', 'maus']).pipe(delay(5000));
+    const delayedObservable = from(['hund', 'katze', 'maus']).pipe(delay(1000));
     console.log('before delay execution - waiting 5 secs');
     delayedObservable.subscribe((data) => console.log(data));
   }

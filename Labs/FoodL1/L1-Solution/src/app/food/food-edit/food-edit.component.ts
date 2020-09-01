@@ -4,23 +4,23 @@ import {
   Input,
   Output,
   EventEmitter,
-  SimpleChanges
-} from "@angular/core";
-import { FoodItem } from "src/app/shared/foodItem";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+  SimpleChanges,
+} from '@angular/core';
+import { FoodItem } from 'src/app/food/foodItem';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-food-edit",
-  templateUrl: "./food-edit.component.html",
-  styleUrls: ["./food-edit.component.scss"]
+  selector: 'app-food-edit',
+  templateUrl: './food-edit.component.html',
+  styleUrls: ['./food-edit.component.scss'],
 })
 export class FoodEditComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       id: 0,
-      name: ["", [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       price: [0, Validators.min(1)],
-      calories: 0
+      calories: 0,
     });
   }
 
@@ -33,13 +33,13 @@ export class FoodEditComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.food != undefined) {
-      console.log("receiving food", changes.food.currentValue);
+      console.log('receiving food', changes.food.currentValue);
       this.form.setValue(changes.food.currentValue);
     }
   }
 
   saveForm(form) {
-    console.log("food to save", form.value);
+    console.log('food to save', form.value);
     this.saveFood.emit(form.value);
   }
 }

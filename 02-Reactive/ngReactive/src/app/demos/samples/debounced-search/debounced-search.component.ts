@@ -28,7 +28,6 @@ export class DebouncedSearchComponent implements OnInit, AfterViewInit {
   private attachDebouncedSearch() {
     fromEvent(this.searchBox.nativeElement, 'keyup')
       .pipe(
-        debounceTime(750),
         map((kEvt: KeyboardEvent) => {
           return (kEvt.srcElement as HTMLInputElement).value;
         })

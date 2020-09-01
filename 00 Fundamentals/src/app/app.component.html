@@ -7,10 +7,16 @@
   gdColumns.lt-md="100%"
   class="grid"
 >
-  <div gdArea="navbar" class="navbar"><app-navbar></app-navbar></div>
-  <div gdArea="main" class="main"><router-outlet></router-outlet></div>
+  <div gdArea="navbar" class="navbar">
+    <app-navbar></app-navbar>
+  </div>
+  <div gdArea="main" class="main">
+    <router-outlet></router-outlet>
+  </div>
   <div gdArea="sidemenu" fxHide.lt-md class="footer">
     <app-side-panel></app-side-panel>
   </div>
-  <div gdArea="footer" class="footer"><app-footer></app-footer></div>
+  <div gdArea="footer" class="footer">
+    <app-footer></app-footer>
+  </div>
 </div>
