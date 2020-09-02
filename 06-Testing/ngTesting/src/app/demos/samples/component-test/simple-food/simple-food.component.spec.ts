@@ -31,17 +31,18 @@ describe('Component - Spy - FoodComponent:', () => {
     comp.deleteFood(foodData[3]);
 
     expect(comp.food.length).toBe(3);
-  });
-
-  it('should call deleteItem', () => {
-    // in real life this would happen in beforeEach
-    mockFS = jasmine.createSpyObj(['getItems', 'deleteItem']);
-    comp = new SimpleFoodComponent(mockFS);
-
-    comp.food = foodData;
-    mockFS.deleteItem.and.returnValue(of(serviceResult));
-
-    comp.deleteFood(foodData[3]);
     expect(mockFS.deleteItem).toHaveBeenCalledWith(foodData[3]);
   });
+
+  // it('should call deleteItem', () => {
+  //   // in real life this would happen in beforeEach
+  //   mockFS = jasmine.createSpyObj(['getItems', 'deleteItem']);
+  //   comp = new SimpleFoodComponent(mockFS);
+
+  //   comp.food = foodData;
+  //   mockFS.deleteItem.and.returnValue(of(serviceResult));
+
+  //   comp.deleteFood(foodData[3]);
+  //   expect(mockFS.deleteItem).toHaveBeenCalledWith(foodData[3]);
+  // });
 });

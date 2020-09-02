@@ -21,11 +21,11 @@ describe('Component - Directive - CapitalizeDirective', () => {
 
   it('should capitalize text when initially clicked', () => {
     const debugEl: HTMLElement = fixture.debugElement.nativeElement;
-    const p: HTMLElement = debugEl.querySelector('div');
-    p.click();
+    const div: HTMLElement = debugEl.querySelector('div');
+    div.click();
     fixture.detectChanges();
 
-    expect(p.style.textTransform).toBe('uppercase');
+    expect(div.style.textTransform).toBe('uppercase');
   });
 
   it('should lowercase when clicked twice', () => {
