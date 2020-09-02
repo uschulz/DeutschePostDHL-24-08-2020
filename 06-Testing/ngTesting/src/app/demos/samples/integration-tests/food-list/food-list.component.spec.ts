@@ -61,7 +61,6 @@ describe('Component - Integration Test', () => {
     row.delete.emit(deleteItem);
 
     expect(comp.deleteFood).toHaveBeenCalledWith(deleteItem);
-    fs.deleteItem.and.returnValue(of(serviceResult));
 
     // Think why this does not give three
     fixture.detectChanges();
