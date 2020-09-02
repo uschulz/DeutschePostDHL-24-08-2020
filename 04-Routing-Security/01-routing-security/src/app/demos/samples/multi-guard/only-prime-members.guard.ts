@@ -22,8 +22,6 @@ export class OnlyPrimeMembersGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // return this.as.hasPrimeSubscription();
-
     if (this.as.hasPrimeSubscription()) {
       return true;
     } else {

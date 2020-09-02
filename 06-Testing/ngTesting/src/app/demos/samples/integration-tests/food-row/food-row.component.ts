@@ -8,13 +8,18 @@ import { FoodItem } from '../../food/food.model';
 })
 export class FoodRowComponent implements OnInit {
   @Input() food: FoodItem;
-  @Output() delete = new EventEmitter();
+  @Output() delete: EventEmitter<FoodItem> = new EventEmitter();
+  @Output() edit: EventEmitter<FoodItem> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  deleteFood(item) {
-    this.delete.emit(item);
+  deleteFood() {
+    this.delete.emit(this.food);
+  }
+
+  editFood() {
+    this.edit.emit(this.food);
   }
 }
