@@ -51,7 +51,7 @@ describe('Component - Integration Test', () => {
     expect(rows[0].componentInstance.food.name).toEqual('Pad Thai');
   });
 
-  it('should have three rows when an item is deleted', () => {
+  it('should execute delete when emitted by child item', () => {
     fs.getItems.and.returnValue(of(foodData));
     fixture.detectChanges();
 
