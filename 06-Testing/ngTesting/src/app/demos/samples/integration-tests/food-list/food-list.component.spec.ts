@@ -63,8 +63,9 @@ describe('Component - Integration Test', () => {
     expect(comp.deleteFood).toHaveBeenCalledWith(deleteItem);
     fs.deleteItem.and.returnValue(of(serviceResult));
 
-    // fixture.detectChanges();
-    // const rows = de.queryAll(By.directive(FoodRowComponent));
-    // expect(rows.length).toEqual(4);
+    // Think why this does not give three
+    fixture.detectChanges();
+    const rows = de.queryAll(By.directive(FoodRowComponent));
+    expect(rows.length).toEqual(4);
   });
 });
