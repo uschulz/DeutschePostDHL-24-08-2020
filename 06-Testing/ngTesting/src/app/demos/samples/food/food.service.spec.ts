@@ -1,11 +1,10 @@
-import { FoodService } from './food.service';
 import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
-import { FoodItem } from './food.model';
+import { FoodService } from './food.service';
 
 describe('Service - HttpTest -FoodService', () => {
   let service: FoodService;

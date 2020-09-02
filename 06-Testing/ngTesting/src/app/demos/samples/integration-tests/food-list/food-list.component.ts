@@ -22,4 +22,8 @@ export class FoodListComponent implements OnInit {
     this.food = this.food.filter((i) => i !== food);
     this.fs.deleteItem(food);
   }
+
+  editFood(food: FoodItem) {
+    console.log('edit:', food);
+  }
 }
