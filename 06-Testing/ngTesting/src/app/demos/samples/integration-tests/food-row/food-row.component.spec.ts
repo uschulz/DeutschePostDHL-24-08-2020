@@ -1,8 +1,8 @@
-import { FoodRowComponent } from './food-row.component';
+import { ElementRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA, DebugElement, ElementRef } from '@angular/core';
-import { RatingPipe } from '../../pipe/rating.pipe';
 import { By } from '@angular/platform-browser';
+import { RatingPipe } from '../../pipe/rating.pipe';
+import { FoodRowComponent } from './food-row.component';
 
 describe('Component -Integration Test - Food Row', () => {
   let fixture: ComponentFixture<FoodRowComponent>;
