@@ -22,6 +22,10 @@ describe('Component -Integration Test - Food Row', () => {
     deleteFld = fixture.debugElement.query(By.css('#deleteFld'));
     editFld = fixture.debugElement.query(By.css('#editFld'));
 
+    // alternative
+    let clicks = fixture.debugElement.queryAll(By.css('.cmdIcon'));
+    let ef = clicks[1];
+
     fixture.componentInstance.food = food;
     fixture.detectChanges();
   });

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
-import { MenuItem } from './MenuItem';
 import { MediaObserver } from '@angular/flex-layout';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { MenuItem } from './MenuItem';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +11,9 @@ export class MenuService {
     this.handleChange();
   }
 
-  private visible: boolean = true;
+  private visible = true;
   visible$: BehaviorSubject<boolean> = new BehaviorSubject(this.visible);
-  private position: string = 'side';
+  private position = 'side';
   position$: BehaviorSubject<string> = new BehaviorSubject(this.position);
 
   private handleChange() {
